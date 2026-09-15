@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { User, Mail, Phone, GraduationCap, MapPin, FileText, Send, CheckCircle, AlertCircle } from 'lucide-react';
 
 const programOptions = [
@@ -77,11 +76,7 @@ export default function RegistrationForm() {
     return (
       <section id="register" className="py-20 bg-white">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            className="bg-green-50 rounded-3xl p-12 border border-green-200"
-          >
+          <div className="bg-green-50 rounded-3xl p-12 border border-green-200 animate-scale-in">
             <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <CheckCircle className="w-10 h-10 text-green-600" />
             </div>
@@ -102,7 +97,7 @@ export default function RegistrationForm() {
             >
               Daftar Lagi
             </button>
-          </motion.div>
+          </div>
         </div>
       </section>
     );
@@ -112,13 +107,7 @@ export default function RegistrationForm() {
     <section id="register" className="py-20 bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
+        <div className="text-center mb-12 animate-fade-in-up">
           <span className="inline-block px-4 py-1 bg-blue-100 text-blue-700 text-sm font-semibold rounded-full mb-4">
             Formulir Pendaftaran
           </span>
@@ -128,16 +117,12 @@ export default function RegistrationForm() {
           <p className="text-gray-600 max-w-2xl mx-auto">
             Isi formulir di bawah ini dengan data yang benar dan lengkap.
           </p>
-        </motion.div>
+        </div>
 
         {/* Form */}
-        <motion.form
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+        <form
           onSubmit={handleSubmit}
-          className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100"
+          className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 animate-fade-in-up"
         >
           {/* Personal Info */}
           <div className="mb-8">
@@ -331,7 +316,7 @@ export default function RegistrationForm() {
           <p className="text-center text-xs text-gray-500 mt-4">
             Dengan mendaftar, kamu menyetujui syarat dan ketentuan PMB STT Pro 2026/2027.
           </p>
-        </motion.form>
+        </form>
       </div>
     </section>
   );

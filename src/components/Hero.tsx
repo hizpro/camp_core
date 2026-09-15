@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { ArrowRight, Users, BookOpen, Award, Calendar } from 'lucide-react';
 
 export default function Hero() {
@@ -15,8 +14,8 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-400 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-indigo-400 rounded-full blur-3xl animate-pulse delay-500"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-400 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-indigo-400 rounded-full blur-3xl animate-pulse"></div>
         </div>
         {/* Grid pattern */}
         <div className="absolute inset-0 opacity-5" style={{
@@ -28,11 +27,7 @@ export default function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+          <div className="animate-fade-in-up">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-6">
               <Calendar className="w-4 h-4 text-blue-300" />
               <span className="text-sm text-blue-100">Pendaftaran Dibuka 2026/2027</span>
@@ -68,50 +63,33 @@ export default function Hero() {
                 Lihat Program Studi
               </button>
             </div>
-          </motion.div>
+          </div>
 
           {/* Right Content - Stats */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="hidden lg:block"
-          >
+          <div className="hidden lg:block animate-fade-in-up-delay">
             <div className="grid grid-cols-2 gap-4">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20"
-              >
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:scale-105 transition-transform duration-300">
                 <Users className="w-10 h-10 text-blue-300 mb-3" />
                 <h3 className="text-3xl font-bold text-white">5000+</h3>
                 <p className="text-blue-200 text-sm">Mahasiswa Aktif</p>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20"
-              >
+              </div>
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:scale-105 transition-transform duration-300">
                 <BookOpen className="w-10 h-10 text-purple-300 mb-3" />
                 <h3 className="text-3xl font-bold text-white">8</h3>
                 <p className="text-blue-200 text-sm">Program Studi</p>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20"
-              >
+              </div>
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:scale-105 transition-transform duration-300">
                 <Award className="w-10 h-10 text-green-300 mb-3" />
                 <h3 className="text-3xl font-bold text-white">A</h3>
                 <p className="text-blue-200 text-sm">Akreditasi</p>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20"
-              >
+              </div>
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:scale-105 transition-transform duration-300">
                 <Award className="w-10 h-10 text-yellow-300 mb-3" />
                 <h3 className="text-3xl font-bold text-white">95%</h3>
                 <p className="text-blue-200 text-sm">Tingkat Kelulusan</p>
-              </motion.div>
+              </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
 

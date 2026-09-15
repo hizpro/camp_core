@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Calendar, Clock, FileText, CheckCircle, UserCheck, GraduationCap } from 'lucide-react';
 
 const timelineData = [
@@ -51,13 +50,7 @@ export default function Timeline() {
     <section id="timeline" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16 animate-fade-in-up">
           <span className="inline-block px-4 py-1 bg-purple-100 text-purple-700 text-sm font-semibold rounded-full mb-4">
             Jadwal PMB
           </span>
@@ -67,7 +60,7 @@ export default function Timeline() {
           <p className="text-gray-600 max-w-2xl mx-auto">
             Ikuti setiap tahapan pendaftaran dengan cermat agar proses seleksi berjalan lancar.
           </p>
-        </motion.div>
+        </div>
 
         {/* Timeline */}
         <div className="relative">
@@ -76,19 +69,15 @@ export default function Timeline() {
 
           <div className="space-y-12">
             {timelineData.map((item, index) => (
-              <motion.div
+              <div
                 key={item.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
                 className={`relative flex flex-col md:flex-row items-start gap-8 ${
                   index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
                 }`}
               >
                 {/* Content */}
                 <div className={`flex-1 ml-16 md:ml-0 ${index % 2 === 0 ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12'}`}>
-                  <div className={`bg-white rounded-2xl p-6 shadow-md border border-gray-100 inline-block ${index % 2 === 0 ? 'md:ml-auto' : ''}`}>
+                  <div className={`bg-white rounded-2xl p-6 shadow-md border border-gray-100 inline-block hover:shadow-lg transition-shadow duration-300 ${index % 2 === 0 ? 'md:ml-auto' : ''}`}>
                     <div className="flex items-center gap-3 mb-2">
                       <div className={`w-8 h-8 ${item.color} rounded-lg flex items-center justify-center`}>
                         <item.icon className="w-4 h-4 text-white" />
@@ -105,7 +94,7 @@ export default function Timeline() {
 
                 {/* Empty space for other side */}
                 <div className="flex-1 hidden md:block"></div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

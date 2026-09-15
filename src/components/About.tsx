@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Target, Eye, Heart, CheckCircle } from 'lucide-react';
 
 export default function About() {
@@ -21,13 +20,7 @@ export default function About() {
     <section id="about" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16 animate-fade-in-up">
           <span className="inline-block px-4 py-1 bg-blue-100 text-blue-700 text-sm font-semibold rounded-full mb-4">
             Tentang Kami
           </span>
@@ -38,53 +31,40 @@ export default function About() {
             STT Pro adalah perguruan tinggi teknologi yang berdedikasi mencetak lulusan berkualitas 
             dengan kompetensi yang dibutuhkan industri saat ini.
           </p>
-        </motion.div>
+        </div>
 
         {/* Values */}
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           {values.map((item, index) => (
-            <motion.div
+            <div
               key={item.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="text-center p-8 rounded-2xl bg-gradient-to-b from-gray-50 to-white border border-gray-100 hover:shadow-xl transition-shadow"
+              className="text-center p-8 rounded-2xl bg-gradient-to-b from-gray-50 to-white border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-5">
                 <item.icon className="w-8 h-8 text-blue-600" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
               <p className="text-gray-600">{item.desc}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* Advantages */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-8 sm:p-12"
-        >
+        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-8 sm:p-12 animate-fade-in-up">
           <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Keunggulan Kami</h3>
           <div className="grid sm:grid-cols-2 gap-4">
             {advantages.map((adv, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="flex items-center gap-3 bg-white rounded-xl p-4 shadow-sm"
+                className="flex items-center gap-3 bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow duration-300"
               >
                 <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
                 <span className="text-gray-700 font-medium">{adv}</span>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

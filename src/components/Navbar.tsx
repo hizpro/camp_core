@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, GraduationCap } from 'lucide-react';
 
 interface NavbarProps {
@@ -78,34 +77,27 @@ export default function Navbar({ activeSection, setActiveSection }: NavbarProps)
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t"
-          >
-            <div className="px-4 py-3 space-y-1">
-              {navLinks.map((link) => (
-                <button
-                  key={link.id}
-                  onClick={() => handleClick(link.id)}
-                  className="block w-full text-left px-3 py-2 text-sm font-medium text-gray-600 hover:text-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
-                >
-                  {link.label}
-                </button>
-              ))}
+      {isOpen && (
+        <div className="md:hidden bg-white border-t animate-in fade-in slide-in-from-top duration-200">
+          <div className="px-4 py-3 space-y-1">
+            {navLinks.map((link) => (
               <button
-                onClick={() => handleClick('register')}
-                className="w-full mt-2 px-5 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-semibold rounded-lg"
+                key={link.id}
+                onClick={() => handleClick(link.id)}
+                className="block w-full text-left px-3 py-2 text-sm font-medium text-gray-600 hover:text-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
               >
-                Daftar Sekarang
+                {link.label}
               </button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            ))}
+            <button
+              onClick={() => handleClick('register')}
+              className="w-full mt-2 px-5 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-semibold rounded-lg"
+            >
+              Daftar Sekarang
+            </button>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

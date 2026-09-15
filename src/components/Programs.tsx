@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Monitor, Code, Database, Cpu, Shield, Wifi, BarChart3, Palette } from 'lucide-react';
 
 const programs = [
@@ -81,13 +80,7 @@ export default function Programs() {
     <section id="programs" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16 animate-fade-in-up">
           <span className="inline-block px-4 py-1 bg-indigo-100 text-indigo-700 text-sm font-semibold rounded-full mb-4">
             Program Studi
           </span>
@@ -98,21 +91,16 @@ export default function Programs() {
             Temukan program studi yang sesuai dengan minat dan bakatmu. Semua program kami 
             telah terakreditasi dan dirancang sesuai kebutuhan industri.
           </p>
-        </motion.div>
+        </div>
 
         {/* Programs Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {programs.map((program, index) => (
-            <motion.div
+            <div
               key={program.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              whileHover={{ y: -8 }}
-              className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all border border-gray-100 group cursor-pointer"
+              className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group cursor-pointer hover:-translate-y-2"
             >
-              <div className={`w-14 h-14 ${program.bgColor} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+              <div className={`w-14 h-14 ${program.bgColor} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
                 <program.icon className={`w-7 h-7 ${program.textColor}`} />
               </div>
               <div className="flex items-center gap-2 mb-2">
@@ -122,7 +110,7 @@ export default function Programs() {
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">{program.name}</h3>
               <p className="text-sm text-gray-600 leading-relaxed">{program.desc}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

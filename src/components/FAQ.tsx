@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 
 const faqData = [
@@ -44,13 +43,7 @@ export default function FAQ() {
     <section id="faq" className="py-20 bg-gray-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
+        <div className="text-center mb-12 animate-fade-in-up">
           <span className="inline-block px-4 py-1 bg-amber-100 text-amber-700 text-sm font-semibold rounded-full mb-4">
             FAQ
           </span>
@@ -60,17 +53,13 @@ export default function FAQ() {
           <p className="text-gray-600 max-w-2xl mx-auto">
             Temukan jawaban untuk pertanyaan yang sering diajukan seputar PMB STT Pro.
           </p>
-        </motion.div>
+        </div>
 
         {/* FAQ Items */}
         <div className="space-y-3">
           {faqData.map((faq, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
               className="bg-white rounded-xl border border-gray-100 overflow-hidden shadow-sm"
             >
               <button
@@ -87,33 +76,17 @@ export default function FAQ() {
                   }`}
                 />
               </button>
-              <AnimatePresence>
-                {openIndex === index && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="overflow-hidden"
-                  >
-                    <div className="px-5 pb-5 pl-13 ml-8">
-                      <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
+              {openIndex === index && (
+                <div className="px-5 pb-5 ml-8 animate-slide-down">
+                  <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                </div>
+              )}
+            </div>
           ))}
         </div>
 
         {/* Contact CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mt-12 text-center bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white"
-        >
+        <div className="mt-12 text-center bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white animate-fade-in-up">
           <h3 className="text-xl font-bold mb-2">Masih ada pertanyaan?</h3>
           <p className="text-blue-100 mb-4">Hubungi tim admisi kami untuk bantuan lebih lanjut.</p>
           <div className="flex flex-wrap justify-center gap-4">
@@ -124,7 +97,7 @@ export default function FAQ() {
               📞 (021) 1234-5678
             </a>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

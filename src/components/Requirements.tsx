@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { FileText, User, GraduationCap, CreditCard, CheckSquare } from 'lucide-react';
 
 const requirements = [
@@ -57,13 +56,7 @@ export default function Requirements() {
     <section id="requirements" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16 animate-fade-in-up">
           <span className="inline-block px-4 py-1 bg-green-100 text-green-700 text-sm font-semibold rounded-full mb-4">
             Persyaratan
           </span>
@@ -73,18 +66,14 @@ export default function Requirements() {
           <p className="text-gray-600 max-w-2xl mx-auto">
             Pastikan kamu telah menyiapkan semua dokumen yang diperlukan sebelum mendaftar.
           </p>
-        </motion.div>
+        </div>
 
         {/* Requirements Cards */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {requirements.map((req, index) => (
-            <motion.div
+            <div
               key={req.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-shadow"
+              className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
             >
               <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
                 <req.icon className="w-6 h-6 text-green-600" />
@@ -98,31 +87,25 @@ export default function Requirements() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* General Conditions */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8 border border-green-100"
-        >
+        <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8 border border-green-100 animate-fade-in-up">
           <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
             <CheckSquare className="w-6 h-6 text-green-600" />
             Syarat Umum Pendaftar
           </h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {conditions.map((cond, index) => (
-              <div key={index} className="flex items-center gap-3 bg-white rounded-xl p-3 shadow-sm">
+              <div key={index} className="flex items-center gap-3 bg-white rounded-xl p-3 shadow-sm hover:shadow-md transition-shadow duration-300">
                 <CheckSquare className="w-5 h-5 text-green-500 flex-shrink-0" />
                 <span className="text-sm text-gray-700 font-medium">{cond}</span>
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
